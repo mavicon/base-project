@@ -1,11 +1,13 @@
 #!/bin/bash
+source ${BASE_PROJECT_HOME}/bin/f_global.sh
+source ${BASE_PROJECT_HOME}/bin/f_maven.sh
+source ${BASE_PROJECT_HOME}/bin/f_vagrant.sh
+
+setGlobalAliasses
+
 export SOFTWARE_HOME=~/Software
 export PROJECTS_ROOT=~/Projects
 export PROJECT_HOME=${PROJECTS_ROOT}/${PROJECT_NAME}
-
-function doMvnWithSettings() {
-  "$MAVEN_HOME/bin/mvn" -s "$PROJECT_HOME"/bin/mvn-settings.xml $*
-}
 
 if [[ -n ${JAVA_VERSION} ]]; then
   echo "Using java ${JAVA_VERSION}"
@@ -16,7 +18,6 @@ fi
 if [[ -n ${MAVEN_VERSION} ]]; then
   echo "Using maven ${MAVEN_VERSION}"
   export MAVEN_HOME=${SOFTWARE_HOME}/apache-maven-${MAVEN_VERSION}
-  #export PATH=${MAVEN_HOME}/bin:${PATH}
   alias mvn=doMvnWithSettings
 fi
 
@@ -33,4 +34,5 @@ fi
 if [[ -n ${VAGRANT_LOCATION} ]]; then
   echo "Using vagrant machines in ${VAGRANT_LOCATION}"
   export VAGRANT_CWD=${VAGRANT_LOCATION}
+  setVagrantAliasses
 fi
