@@ -17,4 +17,4 @@ fi
 cp -R -n ${BASE_PROJECT_HOME}/project-template/* ${PROJECT_DIR}
 chmod a+rx ${PROJECT_DIR}/bin/*.sh
 
-find . -name '*' -type f -exec sed -i '' -e "s/:your-project-name:/${PROJECT_NAME}/g" {} \;
+find . -name '*' -type f -exec sed -i '' -e "s/testje/${PROJECT_NAME}/g" {} \;
