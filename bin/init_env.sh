@@ -33,6 +33,6 @@ fi
 
 if [[ -n ${VAGRANT_LOCATION} ]]; then
   echo "Using vagrant machines in ${VAGRANT_LOCATION}"
-  export VAGRANT_CWD=${VAGRANT_LOCATION}
+  export VAGRANT_CWD=${PROJECT_HOME}/${VAGRANT_LOCATION}
   setVagrantAliasses
 fi
